@@ -1,7 +1,8 @@
+import TaskForm from './Components/TaskForm';
 
 function App() {
   return (
-    <h1>hi</h1>
+    <TaskForm/>
   );
 }
 
