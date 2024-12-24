@@ -1,12 +1,19 @@
 import React, {useState} from 'react'
 
-export default function TaskForm() {
+export default function TaskForm({addTask}) {
   const [task, setTask] = useState('');
   const [priority, setPriority] = useState('Medium');
   const [category, setCategory] = useState('General');
+  const handlesubmit = () => {
+    
+    addTask({text: task, priority, category, completed: false});
+    setPriority("Medium");
+    setCategory("General");
+    setTask("");
+  }
   return (
     <div>
-        <form className='task-form'>
+        <form onSubmit={handlesubmit} className='task-form'>
           <div id="inp">
             <input type='text'
             placeholder='Enter your text'
@@ -15,7 +22,7 @@ export default function TaskForm() {
             onChange={(e) => setTask(e.target.value)}/>
             <span><button>Add Task</button></span>
             </div>
-            <div className='btns'>
+            <div id='btns'>
          
               <select value={priority} onChange={(e)=>setPriority(e.target.value)}>
                 <option>Medium</option>
